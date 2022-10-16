@@ -78,9 +78,7 @@ HuskyComms::~HuskyComms()
 
 
 void HuskyComms::sub(){
-    while(ros::ok()){
-        ros::spinOnce();
-    }
+    ros::spin();
 }
 
 // Note no transformation mat needed between imu and odometry for husky

@@ -55,18 +55,20 @@ int main(int argc, char **argv)
     HuskySystem system(&nh, &husky_data_buffer);
     // system->setEstimator(std::make_shared<BodyEstimator>());
 
-    
+
     // // //TODO: Listen/Respond Loop
     // bool received_data = true;
+    ros::Rate loop_rate(400);
     while (ros::ok())
-    {   
+    {
         //  boost::timer::auto_cpu_timer t;
         system.step();
         /// TODO: publish to ros
         ros::spinOnce();
+        loop_rate.sleep();
     }
 
-    
+
 
     return 0;
 }
