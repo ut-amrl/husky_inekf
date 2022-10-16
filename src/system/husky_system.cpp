@@ -215,7 +215,7 @@ bool HuskySystem::updateNextIMU() {
     std::lock_guard<std::mutex> lock(husky_data_buffer_->imu_mutex);
     if (!husky_data_buffer_->imu_q.empty()) {
 
-        if(husky_data_buffer_->imu_q.size()>1){
+        if(husky_data_buffer_->imu_q.size()>2){
             ROS_INFO_STREAM("Filter not running in real-time!");
             ROS_INFO_STREAM("IMU queue size: " <<  husky_data_buffer_->imu_q.size());
         }
@@ -234,7 +234,7 @@ bool HuskySystem::updateNextJointState() {
     std::lock_guard<std::mutex> lock(husky_data_buffer_->joint_state_mutex);
     if (!husky_data_buffer_->joint_state_q.empty()) {
 
-        if(husky_data_buffer_->joint_state_q.size()>1){
+        if(husky_data_buffer_->joint_state_q.size()>2){
             ROS_INFO_STREAM("Filter not running in real-time!");
             ROS_INFO_STREAM("Joint state queue size: " <<  husky_data_buffer_->joint_state_q.size());
         }
@@ -254,10 +254,10 @@ bool HuskySystem::updateNextJointState() {
 
 bool HuskySystem::updateNextWheelVelocity() {
     std::lock_guard<std::mutex> lock(husky_data_buffer_->wheel_vel_mutex);
-    
+
     if (!husky_data_buffer_->wheel_velocity_q.empty()) {
 
-        if(husky_data_buffer_->wheel_velocity_q.size()>1){
+        if(husky_data_buffer_->wheel_velocity_q.size()>2){
             ROS_INFO_STREAM("Filter not running in real-time!");
             ROS_INFO_STREAM("Velocity queue size: " <<  husky_data_buffer_->wheel_velocity_q.size());
         }
@@ -273,10 +273,10 @@ bool HuskySystem::updateNextWheelVelocity() {
 
 bool HuskySystem::updateNextCameraVelocity() {
     std::lock_guard<std::mutex> lock(husky_data_buffer_->cam_vel_mutex);
-    
+
     if (!husky_data_buffer_->camera_velocity_q.empty()) {
 
-        if(husky_data_buffer_->camera_velocity_q.size()>1){
+        if(husky_data_buffer_->camera_velocity_q.size()>2){
             ROS_INFO_STREAM("Filter not running in real-time!");
             ROS_INFO_STREAM("Velocity queue size: " <<  husky_data_buffer_->camera_velocity_q.size());
         }
@@ -292,10 +292,10 @@ bool HuskySystem::updateNextCameraVelocity() {
 
 bool HuskySystem::updateNextGPSVelocity() {
     std::lock_guard<std::mutex> lock(husky_data_buffer_->gps_vel_mutex);
-    
+
     if (!husky_data_buffer_->gps_velocity_q.empty()) {
 
-        if(husky_data_buffer_->gps_velocity_q.size()>1){
+        if(husky_data_buffer_->gps_velocity_q.size()>2){
             ROS_INFO_STREAM("Filter not running in real-time!");
             ROS_INFO_STREAM("Velocity queue size: " <<  husky_data_buffer_->gps_velocity_q.size());
         }
